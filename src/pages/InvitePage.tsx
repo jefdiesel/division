@@ -37,7 +37,9 @@ export default function InvitePage() {
       await acceptInvite.mutateAsync({ token, displayName: displayName.trim() });
       navigate("/setup");
     } catch (e) {
-      setError(e instanceof Error ? e.message : "Failed to accept invite");
+      const msg = e instanceof Error ? e.message : JSON.stringify(e);
+      console.error("Accept invite error:", e);
+      setError(msg);
     }
   };
 

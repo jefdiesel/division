@@ -45,7 +45,9 @@ export default function CreateHouseholdPage() {
       setInviteLink(`${window.location.origin}/invite/${invite.token}`);
       setStep("waiting");
     } catch (e) {
-      setError(e instanceof Error ? e.message : "Failed to send invite");
+      const msg = e instanceof Error ? e.message : JSON.stringify(e);
+      console.error("Create household error:", e);
+      setError(msg);
     }
   };
 
