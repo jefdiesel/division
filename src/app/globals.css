@@ -1,26 +1,84 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --warm-50: #fef7f0;
+  --warm-100: #fdecd8;
+  --warm-200: #fad5ae;
+  --warm-300: #f5b67a;
+  --warm-400: #ef8f44;
+  --warm-500: #ea7522;
+  --warm-600: #db5b15;
+  --warm-700: #b64414;
+  --warm-800: #923618;
+  --warm-900: #762f17;
+  --sage-50: #f4f7f4;
+  --sage-100: #e4ebe4;
+  --sage-200: #c9d7c9;
+  --sage-300: #a2b8a2;
+  --sage-400: #769476;
+  --sage-500: #577757;
+  --sage-600: #435f43;
+  --sage-700: #374d37;
+  --sage-800: #2e3f2e;
+  --sage-900: #273427;
+  --sand-50: #faf8f5;
+  --sand-100: #f2ede5;
+  --sand-200: #e4dbc9;
+  --sand-300: #d3c4a7;
+  --sand-400: #c0a883;
+  --sand-500: #b3936a;
+  --sand-600: #a6825e;
+  --sand-700: #8b6a4f;
+  --sand-800: #725745;
+  --sand-900: #5e483b;
+  --rose-50: #fef2f3;
+  --rose-100: #fde6e8;
+  --rose-200: #fbd0d5;
+  --rose-300: #f7aab3;
+  --rose-400: #f27a8b;
+  --rose-500: #e74d66;
+  --rose-600: #d32d50;
+  --rose-700: #b12142;
+  --rose-800: #941e3d;
+  --rose-900: #7f1d39;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-background: var(--warm-50);
+  --color-foreground: var(--warm-900);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+body {
+  background: var(--warm-50);
+  color: #3d2e1f;
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Tooltip for dollar values */
+.dollar-tooltip {
+  position: relative;
+}
+
+.dollar-tooltip::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 6px 12px;
+  background: #3d2e1f;
+  color: #fef7f0;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  margin-bottom: 6px;
+}
+
+.dollar-tooltip:hover::after {
+  opacity: 1;
 }
