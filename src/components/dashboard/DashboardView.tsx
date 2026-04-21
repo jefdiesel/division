@@ -1,8 +1,11 @@
 import { useState, useMemo } from "react";
+import { Link } from "react-router-dom";
 import { SegmentedControl } from "@/components/ui/SegmentedControl";
 import { Spinner } from "@/components/ui/Spinner";
+import { DashboardSkeleton } from "@/components/ui/Skeleton";
 import { SplitBar } from "@/components/ui/SplitBar";
 import { Card } from "@/components/ui/Card";
+import { Button } from "@/components/ui/Button";
 import { CategorySplit } from "./CategorySplit";
 import { useAuth } from "@/lib/hooks/useAuth";
 import { useHousehold } from "@/lib/hooks/useHousehold";
@@ -116,7 +119,7 @@ export function DashboardView() {
         counted++;
       }
     }
-    if (counted === 0) return { v1: 50, v2: 50 };
+    if (counted === 0) return { v1: 0, v2: 0 };
     const avg = totalRatio1 / counted;
     return { v1: Math.round(avg * 100), v2: Math.round((1 - avg) * 100) };
   }, [splits]);
@@ -125,7 +128,7 @@ export function DashboardView() {
     <div className="pb-2">
       {/* Header */}
       <div className="pt-4 pb-3">
-        <h1 className="text-xl font-bold text-bark">Dashboard</h1>
+        <h1 className="text-2xl font-display font-semibold text-bark">Dashboard</h1>
       </div>
 
       {/* Period selector */}
@@ -138,7 +141,34 @@ export function DashboardView() {
       </div>
 
       {isLoading || !splits ? (
-        <Spinner className="py-12" />
+        <DashboardSkeleton />
+      ) : overallValues.v1 === 0 && overallValues.v2 === 0 ? (
+        /* Empty state -- no entries logged yet */
+        <div className="space-y-3">
+          <Card className="py-10 px-6 text-center">
+            <p className="text-sm text-sand-600 mb-1">
+              Log your first tasks to see the split here.
+            </p>
+            <p className="text-xs text-sand-400 mb-5">
+              Once you and your partner start logging, the breakdown appears automatically.
+            </p>
+
+            {/* Preview mockup of what the split bars will look like */}
+            <div className="opacity-40 pointer-events-none max-w-xs mx-auto mb-5">
+              <div className="flex justify-between text-xs text-sand-500 mb-1">
+                <span>{me.display_name}</span>
+                <span>{partner.display_name}</span>
+              </div>
+              <SplitBar value1={65} value2={35} />
+            </div>
+
+            <Link to="/app/log">
+              <Button variant="primary" size="md">
+                Log a Task
+              </Button>
+            </Link>
+          </Card>
+        </div>
       ) : (
         <div className="space-y-3">
           {/* Per-category splits */}

@@ -185,7 +185,7 @@ export function StepEdgeCases({ householdId, members, approvals }: StepEdgeCases
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-xl font-bold text-bark">The gray areas</h2>
+        <h2 className="text-2xl font-display font-semibold text-bark">The gray areas</h2>
         <p className="text-sm text-sand-600 mt-1">
           Some tasks could go either way. For each scenario, pick a category.
           You both need to land on the same answer before moving on.

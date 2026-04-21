@@ -81,7 +81,7 @@ export function StepConfirm({ householdId, members, approvals }: StepConfirmProp
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-xl font-bold text-bark">Everything look right?</h2>
+        <h2 className="text-2xl font-display font-semibold text-bark">Everything look right?</h2>
         <p className="text-sm text-sand-600 mt-1">
           Here's the full picture of what you've agreed on. Once both of you approve,
           logging begins.

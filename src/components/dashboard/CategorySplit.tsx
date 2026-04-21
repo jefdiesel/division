@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Card } from "@/components/ui/Card";
 import { SplitBar } from "@/components/ui/SplitBar";
 import { formatDuration, formatDollars, type CategoryType, type UnitType, CATEGORIES } from "@/lib/constants";
@@ -27,15 +26,8 @@ export function CategorySplit({
   const unit: UnitType = cat.unit;
   const isEmpty = value1 === 0 && value2 === 0;
 
-  // Hover state for revealing dollar amounts on household category
-  const [hovered, setHovered] = useState(false);
-
   return (
-    <Card
-      className="p-4"
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-    >
+    <Card className="p-4">
       {/* Category label with color dot */}
       <div className="flex items-center gap-2 mb-3">
         <div
@@ -72,11 +64,10 @@ export function CategorySplit({
           {/* Split bar */}
           <SplitBar value1={value1} value2={value2} />
 
-          {/* Dollar value for household: subtle, shown on hover only */}
+          {/* Dollar value for household: always visible, subtle */}
           {category === "household" &&
-            hovered &&
             (dollarTotal1 != null || dollarTotal2 != null) && (
-              <div className="flex justify-between mt-2 text-[11px] text-sand-400 transition-opacity">
+              <div className="flex justify-between mt-2 text-[11px] text-sand-400">
                 <span>
                   {dollarTotal1 != null ? formatDollars(dollarTotal1) : ""}
                 </span>

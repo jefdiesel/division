@@ -234,7 +234,7 @@ export function RulesetView() {
       {/* Header */}
       <div className="pt-4 pb-3 flex items-center justify-between">
         <div>
-          <h1 className="text-xl font-bold text-bark">Shared Rules</h1>
+          <h1 className="text-2xl font-display font-semibold text-bark">Shared Rules</h1>
           <p className="text-sm text-sand-600 mt-0.5">
             The agreed-upon tasks and categorization.
           </p>

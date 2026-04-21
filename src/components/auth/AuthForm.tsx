@@ -4,6 +4,24 @@ import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { Card } from "@/components/ui/Card";
 
+/** Map raw Supabase error messages to friendlier copy. */
+function friendlyError(raw: string): string {
+  const map: Record<string, string> = {
+    "Invalid login credentials":
+      "Wrong email or password. Try again.",
+    "User already registered":
+      "This email already has an account. Try signing in instead.",
+    "Email not confirmed":
+      "Check your inbox -- you need to confirm your email first.",
+    "Password should be at least 6 characters":
+      "Your password needs to be at least 6 characters.",
+  };
+  for (const [key, friendly] of Object.entries(map)) {
+    if (raw.includes(key)) return friendly;
+  }
+  return raw;
+}
+
 export function AuthForm() {
   const { signIn, signUp } = useAuth();
   const [mode, setMode] = useState<"login" | "signup">("login");
@@ -21,7 +39,7 @@ export function AuthForm() {
     const { error: authError } = await action(email, password);
 
     if (authError) {
-      setError(authError.message);
+      setError(friendlyError(authError.message));
       setLoading(false);
     }
     // On success, the auth state change will handle navigation
@@ -43,6 +61,12 @@ export function AuthForm() {
             ? "Sign in to your household"
             : "Get started with Division"}
         </p>
+
+        {mode === "signup" && (
+          <p className="text-xs text-sand-400 text-center bg-sand-50 rounded-lg px-3 py-2 mb-4">
+            Both parents will need accounts. You'll set up your household together.
+          </p>
+        )}
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <Input

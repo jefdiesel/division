@@ -114,7 +114,7 @@ export function SetupWizard({ householdId, members }: SetupWizardProps) {
       <div className="max-w-lg mx-auto px-4 py-6 space-y-6">
         {/* Header */}
         <div className="text-center">
-          <h1 className="text-lg font-bold text-bark">Setting up your household</h1>
+          <h1 className="text-2xl font-display font-semibold text-bark italic">Setting up your household</h1>
           <p className="text-xs text-sand-500 mt-0.5">
             Step {SETUP_STEPS.indexOf(currentStep) + 1} of {SETUP_STEPS.length}
           </p>

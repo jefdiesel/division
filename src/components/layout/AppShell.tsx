@@ -14,7 +14,7 @@ export function AppShell({ children }: AppShellProps) {
     <div className="min-h-screen bg-warm-50 flex flex-col">
       <header className="bg-white border-b border-sand-200">
         <div className="max-w-lg mx-auto px-4 h-14 flex items-center justify-between">
-          <span className="text-lg font-bold text-bark tracking-tight">
+          <span className="text-xl font-display font-semibold text-bark tracking-tight italic">
             Division
           </span>
           <Button variant="ghost" size="sm" onClick={signOut}>

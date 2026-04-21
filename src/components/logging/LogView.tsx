@@ -36,7 +36,7 @@ export function LogView() {
         {
           onSuccess: () => {
             setToast(`Logged ${task?.name ?? "entry"}`);
-            setTimeout(() => setToast(null), 1500);
+            setTimeout(() => setToast(null), 2500);
           },
         }
       );
@@ -52,7 +52,7 @@ export function LogView() {
     <div className="pb-2">
       {/* Header */}
       <div className="pt-4 pb-3">
-        <h1 className="text-xl font-bold text-bark">Log</h1>
+        <h1 className="text-2xl font-display font-semibold text-bark">Log</h1>
         <p className="text-sm text-sand-600 mt-0.5">
           Tap to record what you did.
         </p>

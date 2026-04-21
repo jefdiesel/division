@@ -294,7 +294,7 @@ export function StepTasks({ householdId, members, approvals }: StepTasksProps) {
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-xl font-bold text-bark">Review the task list</h2>
+        <h2 className="text-2xl font-display font-semibold text-bark">Review the task list</h2>
         <p className="text-sm text-sand-600 mt-1">
           These are the things you'll be logging. Edit, remove, or add tasks until the list
           feels right to both of you.

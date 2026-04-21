@@ -83,7 +83,7 @@ export function StepCategories({ householdId, members, approvals }: StepCategori
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-xl font-bold text-bark">How we categorize labor</h2>
+        <h2 className="text-2xl font-display font-semibold text-bark">How we categorize labor</h2>
         <p className="text-sm text-sand-600 mt-1">
           Everything you log falls into one of three buckets. Both of you need to agree these
           definitions feel right before moving on.
