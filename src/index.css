@@ -1,0 +1,69 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-warm-50: #fef7f0;
+  --color-warm-100: #fdecd8;
+  --color-warm-200: #fad5ae;
+  --color-warm-300: #f5b67a;
+  --color-warm-400: #ef8f44;
+  --color-warm-500: #ea7522;
+  --color-warm-600: #db5b15;
+  --color-warm-700: #b64414;
+  --color-warm-800: #923618;
+  --color-warm-900: #762f17;
+
+  --color-sage-50: #f4f7f4;
+  --color-sage-100: #e4ebe4;
+  --color-sage-200: #c9d7c9;
+  --color-sage-300: #a2b8a2;
+  --color-sage-400: #769476;
+  --color-sage-500: #577757;
+  --color-sage-600: #435f43;
+  --color-sage-700: #374d37;
+
+  --color-sand-50: #faf8f5;
+  --color-sand-100: #f2ede5;
+  --color-sand-200: #e4dbc9;
+  --color-sand-300: #d3c4a7;
+  --color-sand-400: #c0a883;
+  --color-sand-500: #b3936a;
+  --color-sand-600: #a6825e;
+  --color-sand-700: #8b6a4f;
+  --color-sand-800: #725745;
+  --color-sand-900: #5e483b;
+
+  --color-bark: #3d2e1f;
+}
+
+body {
+  background: var(--color-warm-50);
+  color: var(--color-bark);
+  font-family: system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Tooltip for dollar values */
+[data-tooltip] {
+  position: relative;
+  cursor: help;
+}
+[data-tooltip]::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 6px 12px;
+  background: var(--color-bark);
+  color: var(--color-warm-50);
+  border-radius: 8px;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  z-index: 50;
+}
+[data-tooltip]:hover::after {
+  opacity: 1;
+}
