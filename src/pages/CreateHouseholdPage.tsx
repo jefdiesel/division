@@ -37,19 +37,10 @@ export default function CreateHouseholdPage() {
     try {
       const h = await createHousehold.mutateAsync({ displayName: displayName.trim() });
       setHouseholdId(h.id);
-      setStep("invite");
-    } catch (e) {
-      setError(e instanceof Error ? e.message : "Failed to create household");
-    }
-  };
-
-  const handleInvite = async () => {
-    if (!partnerEmail.trim()) return;
-    setError("");
-    try {
+      // Create invite immediately — no email needed
       const invite = await invitePartner.mutateAsync({
-        householdId,
-        email: partnerEmail.trim(),
+        householdId: h.id,
+        email: "pending",
       });
       setInviteLink(`${window.location.origin}/invite/${invite.token}`);
       setStep("waiting");
@@ -87,29 +78,6 @@ export default function CreateHouseholdPage() {
             {error && <p className="text-sm text-warm-700">{error}</p>}
             <Button size="lg" className="w-full" disabled={!displayName.trim()} onClick={handleCreate}>
               Continue
-            </Button>
-          </>
-        )}
-
-        {step === "invite" && (
-          <>
-            <div className="text-center">
-              <h1 className="text-2xl font-bold text-bark">Invite your co-parent</h1>
-              <p className="text-sm text-sand-700 mt-1">
-                Division only works when both parents set it up together
-              </p>
-            </div>
-            <Input
-              label="Partner's email"
-              type="email"
-              value={partnerEmail}
-              onChange={(e) => setPartnerEmail(e.target.value)}
-              placeholder="their@email.com"
-              autoFocus
-            />
-            {error && <p className="text-sm text-warm-700">{error}</p>}
-            <Button size="lg" className="w-full" disabled={!partnerEmail.trim()} onClick={handleInvite}>
-              Send invite
             </Button>
           </>
         )}
