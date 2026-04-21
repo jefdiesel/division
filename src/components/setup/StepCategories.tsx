@@ -1,3 +1,4 @@
+import type { ReactElement } from "react";
 import { CATEGORIES, type CategoryType, type SetupStep } from "@/lib/constants";
 import type { SetupApproval } from "@/lib/hooks/useSetup";
 import { useApproveStep } from "@/lib/hooks/useSetup";
@@ -28,7 +29,7 @@ const categoryIcons: Record<CategoryType, string> = {
 };
 
 function CategoryIcon({ type }: { type: CategoryType }) {
-  const paths: Record<CategoryType, JSX.Element> = {
+  const paths: Record<CategoryType, ReactElement> = {
     childcare: (
       <path
         strokeLinecap="round"
