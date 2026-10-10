@@ -44,3 +44,4 @@ dist/
 supabase/.temp/
 .env
 .env.local
+!.env.production
